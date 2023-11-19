@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "simple_pca"
-version = "0.0.0"
+version = "0.2.1"
 description = "simple pca"
 readme = "README.rst"
 authors = [
@@ -18,8 +18,17 @@ classifiers = [
     "Programming Language :: Python :: 3",
 ]
 keywords = []
-dependencies = []
+dependencies = [
+    "pandas>=1.5.3",
+    "numpy>=1.26.1",
+    "fileunity>=1.0.3",
+    "wonderparse>=1.0.3",
+]
 requires-python = ">=3.11"
 
 [project.license]
 file = "LICENSE.txt"
+
+[project.urls]
+Download = "https://pypi.org/project/simple-pca/#files"
+Source = "https://github.com/johannes-programming/simple_pca"
