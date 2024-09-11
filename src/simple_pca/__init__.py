@@ -1,8 +1,9 @@
+import click as _click
 import fileunity as _fu
+import getoptify as _getoptify
 import numpy as _np
 import numpy.linalg as _la
 import pandas as _pd
-import wonderparse as _wp
 
 
 def calculate(data, dimension):
@@ -34,10 +35,9 @@ def calculate(data, dimension):
     eigenvalues = _np.array(_eigenvalues)
     eigenvectors = _np.transpose(_np.array(_eigenvectors))
 
-
     convertedmatrix = stdmatrix * eigenvectors
 
-    #drop zero-columns!
+    # drop zero-columns!
 
     converteddf = _pd.DataFrame(convertedmatrix)
     converteddf = (converteddf - converteddf.mean()) / converteddf.std()
@@ -55,20 +55,23 @@ def calculate(data, dimension):
     return resizedmatrix
 
 
-def run(*, infile, dimension:int=None):
+def run(*, infile, dimension: int = None):
     df = _fu.Simple_TSVUnit.load(ns.infile).data
-    df = df.map(lambda e:float(e.strip()))
+    df = df.map(lambda e: float(e.strip()))
     ans = calculate(data=df, dimension=dimension)
     return ans
 
-def main(args=None):
-    _wp.easymode.simple_run(
-        args=args,
-        program_object=run,
-        prog="simple_pca",
-    )
 
-
-
-
-
+@_getoptify.command(
+    shortopts="hV",
+    longopts=["help", "version", "infile=", "dimension="],
+    allow_argv=True,
+    gnu=True,
+)
+@_click.command(add_help_option=False)
+@_click.option("--dimension", type=int)
+@_click.option("--infile")
+@_click.help_option("-h", "--help")
+@_click.version_option(None, "-V", "--version")
+def main(**kwargs):
+    _click.echo(run(**kwargs))

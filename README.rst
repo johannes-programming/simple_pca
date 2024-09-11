@@ -10,7 +10,7 @@ simple pca
 Installation
 ------------
 
-To install simple_pca, you can use `pip`. Open your terminal and run:
+To install ``simple_pca``, you can use ``pip``. Open your terminal and run:
 
 .. code-block:: bash
 
@@ -24,6 +24,6 @@ This project is licensed under the MIT License.
 Credits
 -------
 - Author: Johannes
-- Email: johannes-programming@posteo.org
+- Email: johannes-programming@mailfence.com
 
-Thank you for using simple_pca!
+Thank you for using ``simple_pca``!
