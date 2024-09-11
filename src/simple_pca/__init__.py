@@ -56,7 +56,7 @@ def calculate(data, dimension):
 
 
 def run(*, infile, dimension: int = None):
-    df = _fu.Simple_TSVUnit.load(ns.infile).data
+    df = _fu.Simple_TSVUnit.load(infile).data
     df = df.map(lambda e: float(e.strip()))
     ans = calculate(data=df, dimension=dimension)
     return ans
